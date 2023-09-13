@@ -6,7 +6,7 @@ const showPosts = (posts, elementHtml) => {
             <section class="d-flex gap-2">
                 <img src="${pub.url_image}" class="rounded" height="200" width="200" alt="${pub.title}" >
                 <div class="d-flex flex-column justify-content-between">
-                    <h4>${pub.title}</h4>
+                    <h4 class="text-capitalize">${pub.title}</h4>
                     <p>${pub.detail}</p>
                     <p>${pub.date}</p>
                 </div>
