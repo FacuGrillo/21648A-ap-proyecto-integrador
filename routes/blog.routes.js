@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const {
-    actualizarPublicacion,
-    crearPublicacion,
-    eliminarPublicacion,
-    obtenerPublicacion,
-    obtenerPublicaciones,
+    modPost,
+    newPost,
+    delPost,
+    getPost,
+    getPosts,
 } = require('../controllers/blog.controllers');
 
 // ====================================================
@@ -23,19 +23,19 @@ router.get('/admin', (req, res) => {
 //              Rutas para manejar Datos
 // ====================================================
 // Ruta para obtener todas las publicaciones
-router.get('/publicaciones/', obtenerPublicaciones);
+router.get('/posts/', getPosts);
 
 // Ruta para obtener una publicación
-router.get('/publicacion/:id', obtenerPublicacion);
+router.get('/post/:id', getPost);
 
 // Ruta para crear nueva publicación
-router.post('/publicacion/', crearPublicacion);
+router.post('/post/', newPost);
 
 // Ruta para actualizar publicación
-router.put('/publicacion/:id', actualizarPublicacion);
+router.put('/post/:id', modPost);
 
 // Ruta para eliminar publicación
-router.delete('/publicacion/:id', eliminarPublicacion);
+router.delete('/post/:id', delPost);
 
 
 

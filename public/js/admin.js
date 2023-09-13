@@ -1,20 +1,20 @@
 
 
-const formNuevo = document.querySelector('#nueva-publicacion');
+const formNuevo = document.querySelector('#new-post');
 
 formNuevo.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const data = {
-        titulo: document.querySelector('#titulo').value,
-        detalle: document.querySelector('#detalle').value,
-        url_imagen: document.querySelector('#url_imagen').value,
-        fecha: document.querySelector('#fecha').value,
+        title: document.querySelector('#title').value,
+        detail: document.querySelector('#detail').value,
+        url_image: document.querySelector('#url_image').value,
+        date: document.querySelector('#date').value,
     }
 
 
     // Enviar los datos al servidor para crear la nueva publicación
-    const respuesta = await fetch('/publicacion', {
+    const respuesta = await fetch('/post', {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'

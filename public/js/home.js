@@ -1,26 +1,26 @@
-const mostrarPublicaciones = (publicaciones, elementoHtml) => {
+const showPosts = (posts, elementHtml) => {
 
-    let secciones = "";
-    publicaciones.forEach( (pub) => {
-        secciones += `
+    let sections = "";
+    posts.forEach( (pub) => {
+        sections += `
             <section class="d-flex gap-2">
-                <img src="${pub.url_imagen}" class="rounded" height="200" width="200" alt="${pub.titulo}" >
+                <img src="${pub.url_image}" class="rounded" height="200" width="200" alt="${pub.title}" >
                 <div class="d-flex flex-column justify-content-between">
-                    <h4>${pub.titulo}</h4>
-                    <p>${pub.detalle}</p>
-                    <p>${pub.fecha}</p>
+                    <h4>${pub.title}</h4>
+                    <p>${pub.detail}</p>
+                    <p>${pub.date}</p>
                 </div>
             </section>
 
         `
     })
 
-    elementoHtml.innerHTML = secciones;
+    elementHtml.innerHTML = sections;
     
 }
 
-const obtenerPublicaicones = async () => {
-    const response = await fetch('/publicaciones')
+const getPosts = async () => {
+    const response = await fetch('/posts')
     const data = await response.json()
     return data;
 }
@@ -31,7 +31,7 @@ const obtenerPublicaicones = async () => {
 
 document.addEventListener('DOMContentLoaded', async () => {
     
-    const publicaciones = await obtenerPublicaicones()
-    const main = document.querySelector('#lista-publicaciones')
-    mostrarPublicaciones(publicaciones, main)
+    const posts = await getPosts()
+    const main = document.querySelector('#posts-list')
+    showPosts(posts, main)
 })

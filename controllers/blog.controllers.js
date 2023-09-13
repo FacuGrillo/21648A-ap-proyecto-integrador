@@ -1,18 +1,18 @@
 const ctrl = {};
-const Publicacion = require('../models/Publicacion');
+const Post = require('../models/Post');
 
 // Controlador para crear nueva publicación
-ctrl.crearPublicacion = async (req, res) => {
+ctrl.newPost = async (req, res) => {
 
-    // const { titulo, detalle, url_imagen, fecha } = req.body
+    // const { title, detail, url_image, date } = req.body
 
     try {
-        const publicacion = await Publicacion.create(req.body)
-        await publicacion.save()
+        const post = await Post.create(req.body)
+        await post.save()
 
         return res.json({
             msg: 'Publicación guardada con éxito!',
-            publicacion
+            post
         })
     } catch (error) {
         console.log(error.message);
@@ -24,10 +24,10 @@ ctrl.crearPublicacion = async (req, res) => {
 };
 
 // Controlador para obtener todas las publicaciones
-ctrl.obtenerPublicaciones = async (req, res) => {
+ctrl.getPosts = async (req, res) => {
     try {
-        const publicaciones = await Publicacion.findAll();
-        return res.json(publicaciones)
+        const posts = await Post.findAll();
+        return res.json(posts)
     } catch (error) {
         console.log(error.message);
         return res.status(500).json({
@@ -37,11 +37,11 @@ ctrl.obtenerPublicaciones = async (req, res) => {
 };
 
 // Controlador para obtener una publicación
-ctrl.obtenerPublicacion = async (req, res) => {
+ctrl.getPost = async (req, res) => {
     try {
         const { id } = req.params;
-        const publicacion = await Publicacion.findByPk(id);
-        return res.json(publicacion)
+        const post = await Post.findByPk(id);
+        return res.json(post)
     } catch (error) {
         console.log(error.message)
         return res.status(500).json({
@@ -52,13 +52,13 @@ ctrl.obtenerPublicacion = async (req, res) => {
 };
 
 // Controlador para actualizar una publicación
-ctrl.actualizarPublicacion = async (req, res) => {
+ctrl.modPost = async (req, res) => {
     const { id } = req.params;
     
     try {
-        const publicacion = await Publicacion.findByPk(id);
-        publicacion.set(req.body)
-        await publicacion.save();
+        const post = await Post.findByPk(id);
+        post.set(req.body)
+        await post.save();
         return res.json({
             msg: 'Publicación actualizada con éxito!'
         })  
@@ -71,7 +71,7 @@ ctrl.actualizarPublicacion = async (req, res) => {
 };
 
 // Controlador para eliminar una publicación
-ctrl.eliminarPublicacion = async (req, res) => {
+ctrl.delPost = async (req, res) => {
 
 };
 

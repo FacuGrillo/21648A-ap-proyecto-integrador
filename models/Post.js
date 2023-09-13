@@ -1,31 +1,31 @@
 const { sequelize, DataTypes } =  require('../database');
 
-const Publicacion = sequelize.define('Publicacion', {
+const Post = sequelize.define('Post', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
-    titulo: {
+    title: {
         type: DataTypes.STRING(255),
         allowNull: false,
     },
-    detalle: {
+    detail: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    url_imagen: {
+    url_image: {
         type: DataTypes.STRING(255),
         allowNull: true,
     },
-    fecha: {
+    date: {
         type: DataTypes.DATE,
         allowNull: false,
     }
 }, {
-    tableName: 'publicaciones',
+    tableName: 'posts',
     timestamps: false
 })
 
 
-module.exports = Publicacion;
+module.exports = Post;
