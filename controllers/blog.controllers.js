@@ -72,6 +72,20 @@ ctrl.modPost = async (req, res) => {
 
 // Controlador para eliminar una publicación
 ctrl.delPost = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const post = await Post.findByPk(id);
+        await post.destroy();
+        return res.json({
+            msg: 'Publicación eliminada con éxito!'
+        }) 
+    } catch (error) {
+        console.log(error.message)
+        return res.status(500).json({
+            msg: "Error al eliminar Publicación!"
+        })
+    }
 
 };
 

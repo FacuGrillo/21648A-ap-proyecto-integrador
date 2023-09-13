@@ -1,14 +1,14 @@
 
 
-const formNuevo = document.querySelector('#new-post');
+const formNew = document.querySelector('#new-post');
 
-formNuevo.addEventListener('submit', async (e) => {
+formNew.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const data = {
         title: document.querySelector('#title').value,
         detail: document.querySelector('#detail').value,
-        url_image: document.querySelector('#url_image').value,
+        url_image: document.querySelector('#url_image').value || 'https://www3.minijuegosgratis.com/v3/games/thumbnails/223278_1.jpg',
         date: document.querySelector('#date').value,
     }
 
